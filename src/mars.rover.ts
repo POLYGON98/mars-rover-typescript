@@ -1,14 +1,15 @@
 import {Direction} from "./direction";
+import {Coordinates} from "./coordinates";
 
 export class MarsRover {
     execute(commands: string): string {
-        let count = 0;
+        let coordinates = new Coordinates(0, 0);
         let facing = new Direction('N');
 
         for (let i = 0; i < commands.length; i++) {
             const currentCommand = commands[i];
             if (currentCommand === 'M') {
-                count = this.move(count);
+                coordinates = this.move(facing, coordinates);
             } else if (currentCommand === 'R') {
                 facing = facing.rotateRight();
             } else if (currentCommand === 'L') {
@@ -16,14 +17,14 @@ export class MarsRover {
             }
         }
 
-        return '0:' + count + ':' + facing.direction;
+        return coordinates.x + ':' + coordinates.y + ':' + facing.direction;
     }
 
-    private move(count: number) {
-        count++;
-        if (count > 9) {
-            count = 0;
+    move(facing: Direction, coordinates: Coordinates): Coordinates {
+        if (facing.direction === 'N') {
+            return coordinates.moveNorth();
+        } else {
+            return coordinates.moveEast();
         }
-        return count;
     }
 }

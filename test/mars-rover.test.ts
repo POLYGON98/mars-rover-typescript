@@ -89,4 +89,10 @@ describe('MarsRover', () => {
 
         expect(response).toEqual('0:0:N');
     });
+
+    it('should have coords of 1:0:E after rotating right and moving one square', function () {
+        const response = marsRover.execute('RM');
+
+        expect(response).toEqual('1:0:E');
+    });
 });
