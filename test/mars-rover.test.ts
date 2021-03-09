@@ -23,4 +23,10 @@ describe('MarsRover', () => {
 
         expect(response).toEqual('0:2:N');
     });
+
+    it('should have coords of 0:5:N after moving five squares', function () {
+        const response = marsRover.execute('MMMMM');
+
+        expect(response).toEqual('0:5:N');
+    });
 });
