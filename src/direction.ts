@@ -21,4 +21,16 @@ export class Direction {
             return new Direction('N');
         }
     }
+
+    public rotateLeft(): Direction {
+        if (this._direction === 'N') {
+            return new Direction('W');
+        } else if (this._direction === 'E') {
+            return new Direction('N');
+        } else if (this._direction === 'S') {
+            return new Direction('E');
+        } else {
+            return new Direction('S');
+        }
+    }
 }
