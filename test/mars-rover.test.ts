@@ -35,4 +35,10 @@ describe('MarsRover', () => {
 
         expect(response).toEqual('0:0:N');
     });
+
+    it('should wrap around to 0:3:N after moving thirteen squares', function () {
+        const response = marsRover.execute('MMMMMMMMMMMMM');
+
+        expect(response).toEqual('0:3:N');
+    });
 });
