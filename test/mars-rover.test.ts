@@ -21,6 +21,6 @@ describe('MarsRover', () => {
     it('should have coords of 0:2:N after moving two squares', function () {
         const response = marsRover.execute('MM');
 
-        expect(response).toEqual('0:1:N');
+        expect(response).toEqual('0:2:N');
     });
 });
