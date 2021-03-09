@@ -5,6 +5,9 @@ export class MarsRover {
         for (let i = 0; i < commands.length; i++) {
             if (commands[i] === 'M') {
                 count++;
+                if (count > 9) {
+                    count = 0;
+                }
             }
         }
 
