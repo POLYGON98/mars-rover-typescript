@@ -11,7 +11,11 @@ export class MarsRover {
                 }
             }
             if (commands[i] === 'R') {
-                direction = 'E';
+                if (direction == 'N') {
+                    direction = 'E';
+                } else if (direction == 'E') {
+                    direction = 'S';
+                }
             }
         }
 
