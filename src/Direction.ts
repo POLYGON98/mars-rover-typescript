@@ -1,9 +1,24 @@
 export class Direction {
 
-    direction: string;
+    private readonly _direction: string;
 
     constructor(direction: string) {
-        this.direction = direction;
+        this._direction = direction;
     }
 
+    get direction(): string {
+        return this._direction;
+    }
+
+    public rotateRight(): Direction {
+        if (this._direction === 'N') {
+            return new Direction('E');
+        } else if (this._direction === 'E') {
+            return new Direction('S');
+        } else if (this._direction === 'S') {
+            return new Direction('W');
+        } else {
+            return new Direction('N');
+        }
+    }
 }
