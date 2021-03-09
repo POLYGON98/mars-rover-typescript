@@ -17,6 +17,8 @@ export class MarsRover {
                     direction = 'S';
                 } else if (direction == 'S') {
                     direction = 'W';
+                } else {
+                    direction = 'N';
                 }
             }
         }
