@@ -16,11 +16,7 @@ export class Coordinates {
     }
 
     public moveNorth(): Coordinates {
-        let newY = this._y + 1;
-        if (newY > 9) {
-            newY = 0;
-        }
-        return new Coordinates(this._x, newY);
+        return new Coordinates(this._x, (this._y + 1) % 10);
     }
 
     public moveEast(): Coordinates {
