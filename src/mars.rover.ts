@@ -1,28 +1,39 @@
+import {Direction} from "./Direction";
+
 export class MarsRover {
     execute(commands: string): string {
         let count = 0;
-        let direction = 'N';
+        const facing = new Direction('N');
 
         for (let i = 0; i < commands.length; i++) {
             if (commands[i] === 'M') {
-                count++;
-                if (count > 9) {
-                    count = 0;
-                }
+                count = this.move(count);
             }
             if (commands[i] === 'R') {
-                if (direction == 'N') {
-                    direction = 'E';
-                } else if (direction == 'E') {
-                    direction = 'S';
-                } else if (direction == 'S') {
-                    direction = 'W';
-                } else {
-                    direction = 'N';
-                }
+                facing.direction = this.rotateRight(facing);
             }
         }
 
-        return '0:' + count + ':' + direction;
+        return '0:' + count + ':' + facing.direction;
+    }
+
+    private rotateRight(facing: Direction) {
+        if (facing.direction === 'N') {
+            return 'E';
+        } else if (facing.direction === 'E') {
+            return 'S';
+        } else if (facing.direction === 'S') {
+            return 'W';
+        } else {
+            return 'N';
+        }
+    }
+
+    private move(count: number) {
+        count++;
+        if (count > 9) {
+            count = 0;
+        }
+        return count;
     }
 }
